@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat app 3!!!!</title>
+    <!-- lol couldn't care less about the css -- copy pasted it from ChatGPT (ok fine I messed around with it a bit... To see original chat gpt stuff go to https://docs.google.com/document/d/1iQefJ3iKIPFATDf4F1jSYUW_AQTAX1KyIJIVXpHB-Yg/edit?tab=t.0)-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        
+        #messages {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+            height: 30em;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            font-weight: bolder;
+        }
+
+        #messages li {
+            padding: 8px;
+            border: 2px solid grey;
+            border-radius: 15px;
+            width: 40%;
+            margin: 4px;
+            clear: both;
+        }
+        /*Added some cool stuff!!! from here all the way to line <insert line # here> (i think 47)*/
+        
+        /*Add some new classes for messages from you and messages from them*/
+        .yourMessages {
+            background-color: rgb(21, 127, 241);
+            text-align: right;
+            float: right;
+            color: white;
+        }
+        .otherMessages {
+            background-color: rgb(233, 233, 233);
+            text-align: left;
+            float: left;
+            color: black;
+        }
+        
+        /*yea i added stuff all the way from there to here, from now on it's ChatGPT doing some crazy css work*/
+        #form {
+            display: flex;
+        }
+
+        #message-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #send-btn {
+            padding: 10px 20px;
+            margin-left: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #send-btn:hover {
+            background-color: #45a049;
+        }
+        /*But wait-there's more! This is also completely by me (i was making a username system ok?)*/
+        #name-input, #name-button {
+            font-size: 2em;
+            font-weight: bolder;
+        }
+
+        #room-container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .room {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #CCC;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 15px;
+            background-color: aquamarine;
+            word-break: break-word;
+            overflow: auto;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+        }
+        .room:hover {
+            background-color: rgb(116, 245, 202)
+        }
+        .room:active {
+            background-color: rgb(113, 223, 186)
+        }
+
+        #room-form {
+            font-size: 1.5em;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            margin-top: 15px;
+            padding: 10px;
+            line-height: 1.5em;
+        }
+
+        #new-room-heading, #new-room-description {
+            font-size: 0.8em;
+        }
+
+        #new-room {
+            font-size: 1em;
+            margin-top: 10px;
+            border-radius: 15px;
+            padding: 5px 10px 5px 10px;
+            border: 1px solid green;
+            background-color: greenyellow;
+            cursor: pointer;
+        }
+        #new-room:active {
+            background-color: rgb(149, 221, 40);
+        }
+    </style>
+</head>
+<body>
+    <div id = "name-prompt" class = "screen">
+        <h1>Before you chat...</h1>
+        <form id = "name-form">
+            <input id = "name-input" type = "text" placeholder = "crongle name here...">
+            <button type = "submit" id = "name-button">Submit bad name here</button>
+        </form>
+    </div>
+    <div id = "room-select" class = "screen">
+        <h1>Select a room to join!!!</h1>
+        <template id = "room-template">
+            <div class = "room">
+                <h2 class = "room-heading">
+                    Unnamed
+                </h2>
+                <p class = "room-description">
+                    No description
+                </p>
+            </div>
+        </template>
+        <div id = "room-container">
+            
+        </div>
+        <h1>Create your own room!</h1>
+        <form id = "room-form">
+            <label for = "new-room-heading">Room name: </label><input type = "text" id = "new-room-heading" placeholder = "Type a room name..."><br>
+            <label for = "new-room-description">Room description: </label><br>
+            <textarea type = "text" id = "new-room-description" placeholder = "Type a room description..." rows = "5" cols = "30"></textarea><br>
+            <button id = "new-room">Create new room!</button>
+        </form>
+    </div>
+    <div id = "chat-app" class = "screen">
+        <h1>Chat app 4 :D</h1>
+        <ul id = "messages"></ul><!--Omigod it's an unordered list-->
+        <form id = "form">
+            <input id = "message-input" autocomplete = "off" placeholder = "Type a crongle message..." required>
+            <button id = "send-btn" type = "submit">Send!!</button>
+        </form>
+    </div>
+</body>
+<script src = "/socket.io/socket.io.js"></script><!--Dunno what chatgpt means with this, it doesn't exist (maybe http://localhost:3000/socket.io/socket.io.js ?) (maybe that's what this link is referring to?)-->
+<script src = "script.js"></script><!--Chatgpt did this inside the html, I don't like doing it that way so I'm making a script.js-->
+</html>

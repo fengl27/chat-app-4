@@ -1,0 +1,16 @@
+{
+  "name": "chat-app-4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "runServer": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
